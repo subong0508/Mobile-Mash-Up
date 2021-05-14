@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <script src="index.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+<body id="index2">
+    <div class="box2">
+        <h1 id="in2h1">Park SNS</h1>
+        <div class="btgroup">
+            <!--button 내용 변경시 index.js if문 내용 수정해야함-->
+            <button class="bt2">홈으로</button>
+            <button class="bt2">Map</button>
+        </div>
+    </div>
+    <div class="set">
+    <form>
+        <label for="numbers" class="listlabel" >공원 개수</label>
+        <select id="numbers">
+            <option>1</option>
+            <option>5</option>
+            <option>10</option>
+            <option>15</option>
+            <option>20</option>
+            <option>직접입력</option>
+        </select>
+        <br>
+        <input type="text" id="inputnb"/>
+        <input type="button" id="change" value="변경"/>
+    </form>
+    </div>
+    <div id="listup" class="set">
+        <div class="parkdic">
+            <div class="imgar">
+                <img class="parkimg" src="1.jpg" alt="1"/>
+            </div>
+            <div class="explain">
+                <ul>
+                    <li class="in2li">00 공원</li>
+                    <li class="in2li">나외의 거리:</li>
+                    <li class="in2li">공원 크기:</li>
+                    <li class="in2li">채팅방 인원:</li>
+                </ul>
+            </div>
+                <div class="btnschild">
+                <button class="bt3">Map</button>
+                <button class="bt3">채팅</button>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

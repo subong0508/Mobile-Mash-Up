@@ -48,7 +48,7 @@ function createlist(listnum) {
         parklistsHT += '<div id="listup" class="set">\n' +
             '        <div class="parkdic">\n' +
             '            <div class="imgar">\n' +
-            '                <img class="parkimg" src="Mobile-Mash-Up/images/';
+            '                <img class="parkimg" src="./images/';
         parklistsHT += j;
         parklistsHT += '.jpg" alt="';
         parklistsHT += j;

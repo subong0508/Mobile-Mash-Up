@@ -39,36 +39,30 @@ document.addEventListener('DOMContentLoaded',function() {
         }
     })
 })
+const imglists =['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','12.jpg','13.jpg','14.jpg','15.jpg','16.jpg','17.jpg','18.jpg','19.jpg','20.jpg','21.jpg','22.jpg','23.jpg','24.jpg']
 function createlist(listnum) {
-    let parklists = document.createElement('div');
-    document.getElementById('listup').innerHTML="";
-    let parklistsHT = "";
-    for (let i = 0; i < listnum; i++) {
-        let j=i+1;
-        parklistsHT += '<div id="listup" class="set">\n' +
-            '        <div class="parkdic">\n' +
-            '            <div class="imgar">\n' +
-            '                <img class="parkimg" src="Mobile-Mash-Up/images/';
-        parklistsHT += j;
-        parklistsHT += '.jpg" alt="';
-        parklistsHT += j;
-        parklistsHT += '"/>\n' +
-            '            </div>\n' +
-            '            <div class="explain">\n' +
-            '                <ul>\n' +
-            '                    <li class="in2li">00 공원</li>\n' +
-            '                    <li class="in2li">나외의 거리:</li>\n' +
-            '                    <li class="in2li">공원 크기:</li>\n' +
-            '                    <li class="in2li">채팅방 인원:</li>\n' +
-            '                </ul>\n' +
-            '            </div>\n' +
-            '                <div class="btnschild">\n' +
-            '                <button class="bt3">Map</button>\n' +
-            '                <button class="bt3">채팅</button>\n' +
-            '                </div>\n' +
-            '        </div>\n' +
-            '    </div>';
+    for(i=0;i<listnum;i++) {
+        if (i === imglists.length) {
+            let a = document.createElement('h2')
+            a.setAttribute('id','end')
+            a.innerHTML = '공원의 개수를 초과하였습니다.';
+            document.getElementById('listup').appendChild(a);
+            break;
+        } else {
+            let pluslist = document.createElement('div');
+            let listsrc = 'Mobile-Mash-Up/images/' + imglists[i];
+            pluslist.setAttribute('class', 'parkdic');
+            pluslist.innerHTML = document.getElementsByClassName('parkdic')[0].innerHTML;
+            document.getElementById('listup').appendChild(pluslist);
+            document.getElementsByClassName('parkimg')[i].setAttribute('src', listsrc);
+        }
     }
-    parklists.innerHTML = parklistsHT;
-    document.getElementById('listup').appendChild(parklists);
+    /* 만들어진 요소 나머지 삭제하기
+    let b = document.getElementById('listup').childElementCount;
+    for(j=listnum;j<b;j++){
+        let c =document.getElementsByClassName('parkdic')[j];
+        console.log(c);
+        c.parentNode.removeChild(c);
+    }
+    */
 }

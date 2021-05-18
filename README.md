@@ -3,8 +3,9 @@
 ## Run Application on Local Environment
 
 ```
-conda env create -f requirements.txt
+conda create -n parksns python=3.7
 conda activate parksns
+pip install -r requirements.txt
 cd parksns
 python manage.py runserver
 ```

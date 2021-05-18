@@ -3,28 +3,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>공원 목록</title>
     <link rel="stylesheet" type="text/css" href="{% static 'home/main.css' %}"/>
     <script>
         function loadParks() {
             let parkList = document.getElementById("parkList");
-            let list, div, name, dist, chat;
+            let list, div, name, img, dist, chat, map;
             {% for park in parks %}
                 list = document.createElement("ul");
                 div = document.createElement("div");
                 div.style.border = "1px solid black";
                 name = document.createElement("li");
-                name.innerHTML = "공원 이름:" + "{{ park.p_name }}";
+                name.innerHTML = "공원 이름:" + "{{ park.p_park }}";
                 list.appendChild(name);
+
+                img = document.createElement("img");
+                img.src = "{{ park.p_img }}";
+                img.alt = "공원 사진";
+                img.style.width = img.style.height = "300px";
+                list.appendChild(img);
 
                 dist = document.createElement("li");
                 dist.innerHTML = "거리:" + "{{ park.distance }}";
                 list.appendChild(dist);
 
+                list.innerHTML += "<li>";
                 chat = document.createElement("a")
                 chat.href = "";
                 chat.innerHTML = "채팅방 입장";
                 list.appendChild(chat);
+                list.innerHTML += "</li>";
+
+                list.innerHTML += "<li>";
+                map = document.createElement("a");
+                map.href = "";
+                map.innerHTML = "지도";
+                list.appendChild(map);
+                list.innerHTML += "</li>";
 
                 div.appendChild(list);
                 parkList.appendChild(div);

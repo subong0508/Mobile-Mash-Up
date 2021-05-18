@@ -1,5 +1,29 @@
+import json
+
 from django.shortcuts import render
+
+from haversine import haversine
 
 # Create your views here.
 def index(request):
     return render(request, 'home/index.html')
+
+def location(request):
+    long = float(request.GET['long'])
+    lat = float(request.GET['lat'])
+
+    parks = []
+    with open('seoul_parks.json') as f:
+        info = json.load(f)
+        for park in info['DATA']:
+            if park['longitude'] is not None or park['latitude'] is not None:
+                park['long'] = float(park['longitude'])
+                park['lat'] = float(park['latitude'])
+                park['dist'] = round(haversine((park['lat'], park['long']), (lat, long)), 3)
+                if park['dist'] < 1:
+                    park['distance'] = str(park['dist'] * 1000) + 'm'
+                else:
+                    park['distance'] = str(park['dist']) + 'km'
+                parks.append(park)
+    parks = sorted(parks, key=lambda park: park['dist'])
+    return render(request, 'home/parklist.html', {'parks': parks})

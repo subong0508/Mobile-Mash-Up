@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',function() {
     for (let a=0;a<btselect.length;a++){
         document.querySelectorAll("button")[a].onclick = function (e){
             if(e.target.innerText==='공원 둘러보기'){
-                location.href ="Parklistpage.html";
+                location.href ="home/parklist.html";
             }
             if(e.target.innerText==='홈으로'){
                 location.href ="Homepage.html";

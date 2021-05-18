@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'home/index.css' %}"/>
+    <title>우리 동네 공원봇</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home/main.css' %}"/>
     <script src="{% static 'home/index.js' %}"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
@@ -19,8 +19,11 @@
         <div class="contents set">별도의 회원가입 없이 무료로 이용가능합니다.</div>
         <div class="set">
         <div class="btgroup">
-            <button class="bt">공원 둘러보기</button>
-            <button class="bt">Map</button>
+            <form action="home/location" method="get">
+                <input type="hidden" name="long" id="long">
+                <input type="hidden" name="lat" id="lat">
+                <button class="bt" id="init">로딩중...</button>
+            </form>
         </div>
         </div>
     </div>

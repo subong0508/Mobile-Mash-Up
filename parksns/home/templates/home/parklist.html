@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home/main.css' %}"/>
+    <script>
+        function loadParks() {
+            let parkList = document.getElementById("parkList");
+            let list, div, name, dist, chat;
+            {% for park in parks %}
+                list = document.createElement("ul");
+                div = document.createElement("div");
+                div.style.border = "1px solid black";
+                name = document.createElement("li");
+                name.innerHTML = "공원 이름:" + "{{ park.p_name }}";
+                list.appendChild(name);
+
+                dist = document.createElement("li");
+                dist.innerHTML = "거리:" + "{{ park.distance }}";
+                list.appendChild(dist);
+
+                chat = document.createElement("a")
+                chat.href = "";
+                chat.innerHTML = "채팅방 입장";
+                list.appendChild(chat);
+
+                div.appendChild(list);
+                parkList.appendChild(div);
+            {% endfor %}
+        }
+
+        document.addEventListener("DOMContentLoaded", loadParks);
+    </script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <select id="numbers">
+        <option>1</option>
+        <option>5</option>
+        <option>10</option>
+        <option>15</option>
+        <option>20</option>
+        <option>직접입력</option>
+    </select>
+    <div id="parkList">
+    </div>
+</body>
+</html> 

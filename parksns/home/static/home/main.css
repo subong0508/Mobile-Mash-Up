@@ -1,10 +1,12 @@
 html, body{
     height: 100%;
 }
+
 .set{
     width: 1020px;
     margin: auto;
 }
+
 .box {
     display: block;
     position: relative;
@@ -25,6 +27,7 @@ html, body{
     background-repeat: no-repeat;
     background-size: 100%;
 }
+
 #in2h3{
     display: inline-block;
     font-family: 'Noto Sans KR', sans-serif;
@@ -34,6 +37,7 @@ html, body{
     left: 25px;
     color: black;
 }
+
 .box2 {
     background:linear-gradient(to right,lightgreen,#43cd94);
     border-radius:10px;
@@ -43,17 +47,7 @@ html, body{
     margin: auto;
     justify-content: space-between;
 }
-/* 제출 전에 삭제
-#in1h1 {
-    display: block;
-    font-size: medium;
-    font-family: 'Gothic A1', sans-serif;
-    width: 1020px;
-    position: relative;
-    margin: auto;
-    padding-top: 50px;
-    color: red;
-}*/
+
 #title {
     font-size: 40px;
     font-weight: bold;
@@ -64,6 +58,7 @@ html, body{
     padding-top: 150px;
     color: grey;
 }
+
 #title2 {
     font-size: 40px;
     font-weight: bold;
@@ -75,6 +70,7 @@ html, body{
     font-family: 'Gothic A1', sans-serif;
     text-shadow: -0.5px 0 #557855, 0.5px 0 #557855, 0 0.5px #557855, 0 -0.5px #557855;
 }
+
 .contents {
     font-weight: bold;
     padding-top: 4px;
@@ -86,27 +82,28 @@ html, body{
 
 .btgroup{
     padding-top: 50px;
-    display: flex;
-    justify-content: space-around;
-    width: 300px;
+    width: 200px;
 }
+
 .bt{
     background-color: white;
     display: block;
     font-family: 'Gothic A1', sans-serif;
-    position: relative;
     color: black;
     width: 120px;
     height: 40px;
     border-radius: 20px;
 }
+
 .bt:hover{
     background-color: #d5efc2;
     border-width: 3px;
 }
+
 #index2 {
     background-color: white;
 }
+
 .bt2{
     display: inline-block;
     background-color: white;
@@ -118,6 +115,7 @@ html, body{
     position: relative;
     bottom: 25px;
 }
+
 .bt2:hover{
     background-color: #d5efc2;
     border-width: 3px;
@@ -127,6 +125,7 @@ html, body{
     font-size: 12px;
     font-family: 'Gothic A1', sans-serif;
 }
+
 #listup {
     display: flex;
     flex-direction: column;
@@ -138,6 +137,7 @@ html, body{
     width: 92px;
     height: 25px;
 }
+
 #change{
     margin-top: 6px;
     display: none;

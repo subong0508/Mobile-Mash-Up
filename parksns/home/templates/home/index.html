@@ -5,7 +5,22 @@
     <meta charset="UTF-8">
     <title>우리 동네 공원봇</title>
     <link rel="stylesheet" type="text/css" href="{% static 'home/main.css' %}"/>
-    <script src="{% static 'home/index.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", getLocation);
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } 
+        }
+        
+        function showPosition(position) {
+            document.getElementById("long").value = position.coords.longitude;
+            document.getElementById("lat").value = position.coords.latitude;
+            document.getElementById("init").innerHTML = "공원 둘러보기";
+            document.getElementById("init").disabled = false;
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
@@ -22,7 +37,7 @@
             <form action="home/location" method="get">
                 <input type="hidden" name="long" id="long">
                 <input type="hidden" name="lat" id="lat">
-                <button class="bt" id="init">로딩중...</button>
+                <button class="bt" id="init" disabled="disabled">로딩중...</button>
             </form>
         </div>
         </div>

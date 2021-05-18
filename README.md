@@ -6,4 +6,6 @@
 ```
 conda env create -f environment.yaml
 conda activate parksns
+cd parksns
+python manage.py runserver
 ```

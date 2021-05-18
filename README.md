@@ -2,10 +2,23 @@
 
 ## Run Application on Local Environment
 
+### 1. Create Virtual Environment
+
 ```
 conda create -n parksns python=3.7
+```
+
+### 2. Install Libs
+
+```
 conda activate parksns
 pip install -r requirements.txt
+```
+
+### 3. Run App
+
+```
+conda activate parksns
 cd parksns
 python manage.py runserver
 ```

@@ -3,7 +3,7 @@
 ## Run Application on Local Environment
 
 ```
-conda env create -f environment.yaml
+conda env create -f requirements.txt
 conda activate parksns
 cd parksns
 python manage.py runserver

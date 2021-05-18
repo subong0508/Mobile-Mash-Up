@@ -16,7 +16,7 @@ def location(request):
     with open('seoul_parks.json') as f:
         info = json.load(f)
         for park in info['DATA']:
-            if park['longitude'] is not None or park['latitude'] is not None:
+            if park['longitude'] is not None and park['latitude'] is not None:
                 park['long'] = float(park['longitude'])
                 park['lat'] = float(park['latitude'])
                 park['dist'] = round(haversine((park['lat'], park['long']), (lat, long)), 3)

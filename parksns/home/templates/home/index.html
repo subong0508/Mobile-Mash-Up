@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home/index.css' %}"/>
+    <script src="{% static 'home/index.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+<body>
+    <div class="box">
+        <!--button 내용 변경시 index.js if문 내용 수정해야함-->
+        <!--<button id="bt">Go to Park</button>-->
+        <div id="title">우리 동네</div>
+        <div id="title2">공원봇</div>
+        <div class="contents set">혼자 달리지마세요.</div>
+        <div class="contents set">러닝 메이트와 함께!</div>
+        <div class="contents set">별도의 회원가입 없이 무료로 이용가능합니다.</div>
+        <div class="set">
+        <div class="btgroup">
+            <button class="bt">공원 둘러보기</button>
+            <button class="bt">Map</button>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

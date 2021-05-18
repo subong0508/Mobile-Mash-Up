@@ -13,7 +13,7 @@ def location(request):
     lat = float(request.GET['lat'])
 
     parks = []
-    with open('seoul_parks.json') as f:
+    with open('seoul_parks.json', encoding='utf-8') as f:
         info = json.load(f)
         for park in info['DATA']:
             if park['longitude'] is not None and park['latitude'] is not None:

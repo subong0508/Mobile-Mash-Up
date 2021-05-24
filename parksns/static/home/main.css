@@ -202,6 +202,20 @@ html, body{
     background-color: #d5efc2;
     border-width: 3px;
 }
+
+.chatButton {
+    width: 90px;
+    height: 80px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.chatButton:hover {
+    background-color: #d5efc2;
+    border-width: 3px;
+}
+
 #end{
     text-align: center;
     font-family: 'Nanum Myeongjo', serif;

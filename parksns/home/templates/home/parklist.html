@@ -11,17 +11,21 @@
         let parkname=[];
         let parkimgsrc=[];
         let parkdistance=[];
+        // for chat
+        let parkIdx = [];
         function loadParks() {
             {% for park in parks %}
                 parkname.push("{{ park.p_park }}");
                 parkimgsrc.push("{{ park.p_img }}");
                 parkdistance.push("{{ park.distance }}");
+                parkIdx.push("{{ park.p_idx }}");
             {% endfor %}
             parkobject.parkname = parkname;
             parkobject.parkdistance = parkdistance;
             parkobject.parkimgsrc = parkimgsrc;
-            console.log(parkobject);
-            makelistchild(parkobject,0);
+            parkobject.parkIdx = parkIdx;
+            console.log(parkobject.parkIdx);
+            makelistchild(parkobject, 0);
         }
         document.addEventListener("DOMContentLoaded", loadParks);
     </script>

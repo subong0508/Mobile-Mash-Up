@@ -3,15 +3,9 @@ document.addEventListener('DOMContentLoaded',function() {
     const btselect = document.querySelectorAll("button")
     for (let a = 0; a < btselect.length; a++) {
         document.querySelectorAll("button")[a].onclick = function (e) {
-            if (e.target.innerText === '공원 둘러보기') {
-                location.href = "Parklistpage.html";
-            }
             if (e.target.innerText === '홈으로') {
                 console.log(1);
                 location.href = "/";
-            }
-            if (e.target.innerText === 'Map') {
-                location.href = "Mappage.html";
             }
         }
     }
@@ -34,7 +28,7 @@ function makelistchild(parkobject,x){
     img.alt = "공원 사진";
     img.setAttribute('class','parkimg');
     divimg = document.createElement('div');
-    divimg.setAttribute('class','imgar')
+    divimg.setAttribute('class','imgar');
     divimg.appendChild(img);
     div.appendChild(divimg);
 
@@ -42,20 +36,6 @@ function makelistchild(parkobject,x){
     dist.innerHTML = "거리: " + parkobject.parkdistance[x];
     dist.setAttribute('class','in2li');
     list.appendChild(dist);
-
-    /*list.innerHTML += "<li>";
-    chat = document.createElement("a")
-    chat.href = "";
-    chat.innerHTML = "채팅방 입장";
-    list.appendChild(chat);
-    list.innerHTML += "</li>";
-
-    list.innerHTML += "<li>";
-    map = document.createElement("a");
-    map.href = "";
-    map.innerHTML = "지도";
-    list.appendChild(map);
-    list.innerHTML += "</li>";*/
 
     divlist = document.createElement("div");
     divlist.setAttribute('class','explain');
@@ -67,14 +47,23 @@ function makelistchild(parkobject,x){
     btn1 = document.createElement('button');
     btn1.innerHTML='Map';
     btn1.setAttribute('class','bt3');
-    btn2 = document.createElement('button')
-    btn2.setAttribute('class','bt3');
+
+    // TODO: chatting
+    link = document.createElement('a');
+    link.setAttribute('href', '/chat/' + parkobject.parkIdx[x] + '/');
+
+    btn2 = document.createElement('button');
+    btn2.setAttribute('class', 'chatButton');
     btn2.innerHTML='채팅';
+
+    link.appendChild(btn2);
+
     btnschild.appendChild(btn1);
-    btnschild.appendChild(btn2);
+    btnschild.appendChild(link);
     div.appendChild(btnschild);
     parkList.appendChild(div);
 }
+
 function makelist(parkobject){
     let listnum;
     if(document.getElementById('numbers').value==='직접입력'){

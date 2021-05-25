@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded',function() {
                 location.href = "/";
             }
             if (e.target.innerText === 'Map') {
-                location.href = "Mappage.html";
+                location.href = "mapAll";
             }
         }
     }
@@ -64,13 +64,35 @@ function makelistchild(parkobject,x){
 
     btnschild = document.createElement('div');
     btnschild.setAttribute('class','btnschild');
+
+    form1 = document.createElement('form');
+    form1.setAttribute('action', 'map');
+    form1.setAttribute('method', 'get');
+
+    input1 = document.createElement('input');
+    input1.setAttribute('type', 'hidden');
+    input1.setAttribute('name', 'long');
+    input1.setAttribute('id', 'long');
+    input1.setAttribute('value', parkobject.parklongitude[x]);
+
+    input2 = document.createElement('input');
+    input2.setAttribute('type', 'hidden');
+    input2.setAttribute('name', 'lat');
+    input2.setAttribute('id', 'lat');
+    input2.setAttribute('value', parkobject.parklatitude[x]);
+
     btn1 = document.createElement('button');
     btn1.innerHTML='Map';
     btn1.setAttribute('class','bt3');
+    form1.appendChild(input1);
+    form1.appendChild(input2);
+    form1.appendChild(btn1);
+    btnschild.appendChild(form1);
+
     btn2 = document.createElement('button')
     btn2.setAttribute('class','bt3');
     btn2.innerHTML='채팅';
-    btnschild.appendChild(btn1);
+
     btnschild.appendChild(btn2);
     div.appendChild(btnschild);
     parkList.appendChild(div);

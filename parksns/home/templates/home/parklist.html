@@ -11,15 +11,21 @@
         let parkname=[];
         let parkimgsrc=[];
         let parkdistance=[];
+        let parklongitude=[];
+        let parklatitude=[];
         function loadParks() {
             {% for park in parks %}
                 parkname.push("{{ park.p_park }}");
                 parkimgsrc.push("{{ park.p_img }}");
                 parkdistance.push("{{ park.distance }}");
+                parklongitude.push("{{ park.long }}");
+                parklatitude.push("{{ park.lat }}");
             {% endfor %}
             parkobject.parkname = parkname;
             parkobject.parkdistance = parkdistance;
             parkobject.parkimgsrc = parkimgsrc;
+            parkobject.parklongitude = parklongitude;
+            parkobject.parklatitude = parklatitude;
             console.log(parkobject);
             makelistchild(parkobject,1);
         }

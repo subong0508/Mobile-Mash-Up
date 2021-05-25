@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>여러개 마커에 이벤트 등록하기1</title>
+    <script>
+        let parkobject={};
+        let parkname=[];
+        let parklongitude=[];
+        let parklatitude=[];
+
+        function makeList() {
+            {% for park in parks %}
+                parkname.push("{{ park.p_park }}");
+                parklongitude.push("{{ park.long }}");
+                parklatitude.push("{{ park.lat }}");
+            {% endfor %}
+            parkobject.parkname = parkname;
+            parkobject.parklongitude = parklongitude;
+            parkobject.parklatitude = parklatitude;
+
+            var positions = [];
+            for (var i = 0; i < 131; i++) {
+                var obj = { content: '<div>' + parkobject.parkname[i] + '</div>',
+                latlng: new kakao.maps.LatLng(parkobject.parklatitude[i], parkobject.parklongitude[i]) }
+                positions.push(obj);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", makeList);
+    </script>
+</head>
+<body>
+<div id="map" style="width:100%;height:700px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7b18f668ae5f10154eafbf3d44084f2d"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.566819, 126.978652), // 지도의 중심좌표
+        level: 8 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+var markers = [];
+var infowindows = [];
+document.addEventListener("DOMContentLoaded", () => {
+    for (var i = 0; i < 131; i++) {
+        addMarker(new kakao.maps.LatLng(parkobject.parklatitude[i], parkobject.parklongitude[i]))
+        markers[i].setMap(map);
+        var infowindow = new kakao.maps.InfoWindow({
+            content: parkobject.parkname[i]
+        });
+        infowindows.push(infowindow);
+        kakao.maps.event.addListener(markers[i], 'mouseover', makeOverListener(map, markers[i], infowindows[i]));
+        kakao.maps.event.addListener(markers[i], 'mouseout', makeOutListener(infowindows[i]));
+    }
+})
+
+function addMarker(position) {
+    var marker = new kakao.maps.Marker({
+        position: position
+    });
+
+    marker.setMap(map);
+    markers.push(marker);
+}
+
+
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
+
+</script>
+</body>
+</html>

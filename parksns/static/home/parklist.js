@@ -48,7 +48,6 @@ function makelistchild(parkobject,x){
     btn1.innerHTML='Map';
     btn1.setAttribute('class','bt3');
 
-    // TODO: chatting
     link = document.createElement('a');
     link.setAttribute('href', '/chat/' + parkobject.parkIdx[x] + '/');
 
@@ -80,7 +79,7 @@ function makelist(parkobject){
                 }
             }
             else {
-                alert('40이하의 자연수로 입력해주세요')
+                alert('40이하의 자연수로 입력해주세요');
             }
         }
     }

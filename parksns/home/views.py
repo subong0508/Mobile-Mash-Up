@@ -26,7 +26,7 @@ def location(request):
                     park['distance'] = str(park['dist']) + 'km'
                 parks.append(park)
     parks = sorted(parks, key=lambda park: park['dist'])
-    return render(request, 'home/parklist.html', {'parks': parks})
+    return render(request, 'home/parklist.html', {'parks': parks })
 
 def map(request):
     long = float(request.GET['long'])

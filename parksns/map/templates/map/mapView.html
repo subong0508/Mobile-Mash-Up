@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7b18f668ae5f10154eafbf3d44084f2d"></script>
+</head>
+<body>
+	<div id="map" style="width:1080px;height:720px;"></div>
+	<input type="hidden" id="myLong"></input>
+	<input type="hidden" id="myLat"></input>
+
+	<script>
+		// 맵 생성
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng({{ lat }}, {{ long }}),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+		var markerPosition = new kakao.maps.LatLng({{ lat }}, {{ long }});
+
+		// 마커 생성
+		var marker = new kakao.maps.Marker({
+			position: markerPosition
+		});
+
+		marker.setMap(map);
+
+		var clickLine;
+		var distanceOverlay;
+		var startPosition;
+		// getPosition().then(function() => {
+		// 	startPosition = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
+		// 	});
+
+
+		// //var startPosition = new kakao.maps.LatLng();
+		// clickLine = new kakao.maps.Polyline({
+		// 	map: map,
+		// 	path: [startPosition],
+		// 	strokeWeight: 3,
+		// 	strokeColor: '#db4040',
+		// 	strokeOpacity: 1,
+		// 	strokeStyle: 'solid'
+		// });
+
+		// displayCircleDot(startPosition, 0);
+
+		// var endPosition = new kakao.maps.LatLng({{ lat }}, {{ long }});
+		// path.push(endPosition);
+
+		// var distance = Math.round(clickLine.getLength());
+
+		// displayCircleDot(endPosition, distance);
+		// content = getTimeHTML(distance);
+
+		// showDistance(content, path[1]);
+
+		// function getPosition() {
+		// 	return new Promise((res, rej) => {
+		// 		navigator.geolocation.getCurrentPosition(res, rej);
+		// 	});
+		// }
+
+		// function showDistance(content, position) {
+		// 	distanceOverlay.setPosition(position);
+		// 	distanceOverlay.setContent(content);
+		// }
+
+		// function displayCircleDot(position, distance) {
+		// 	var circleOverlay = new kakao.maps.CustomOverlay({
+		// 		content: '<span class="dot"></span>',
+		// 		position: position,
+		// 		zIndex: 1
+		// 	});
+
+		// 	circleOverlay.setMap(map);
+
+		// 	if (distance > 0) {
+		// 		var distanceOverlay = new kakao.maps.CustomOverlay({
+		// 			content: '<div class="dotOverlay">거리 <span class="number">' + distance + '</span>m</div>',
+		// 			position: position,
+		// 			yAnchor: 1,
+		// 			zIndex: 2
+		// 		});
+
+		// 		distanceOverlay.setMap(map);
+		// 	}
+		// }
+
+		// function getTimeHTML(distance) {
+		// 	var walkkTime = distance / 67 | 0;
+		// 	var walkHour = '', walkMin = '';
+
+		// 	if (walkkTime > 60) {
+		// 		walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 '
+		// 	}
+		// 	walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
+
+		// 	var bycicleTime = distance / 227 | 0;
+		// 	var bycicleHour = '', bycicleMin = '';
+
+		// 	if (bycicleTime > 60) {
+		// 		bycicleHour = '<span class="number">' + Math.floor(bycicleTime / 60) + '</span>시간 '
+		// 	}
+		// 	bycicleMin = '<span class="number">' + bycicleTime % 60 + '</span>분'
+
+		// 	var content = '<ul class="dotOverlay distanceInfo">';
+		// 	content += '    <li>';
+		// 	content += '        <span class="label">총거리</span><span class="number">' + distance + '</span>m';
+		// 	content += '    </li>';
+		// 	content += '    <li>';
+		// 	content += '        <span class="label">도보</span>' + walkHour + walkMin;
+		// 	content += '    </li>';
+		// 	content += '    <li>';
+		// 	content += '        <span class="label">자전거</span>' + bycicleHour + bycicleMin;
+		// 	content += '    </li>';
+		// 	content += '</ul>'
+
+		// 	return content;
+		// }
+
+	</script>
+</body>
+</html>

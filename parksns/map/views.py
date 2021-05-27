@@ -5,7 +5,9 @@ from haversine import haversine
 def map(request):
     long = float(request.GET['long'])
     lat = float(request.GET['lat'])
-    return render(request, 'map/mapView.html', {'long': long, 'lat': lat })
+    p_content = request.GET.get('p_content')
+    p_visit_road = str(request.GET.get('p_visit_road'))
+    return render(request, 'map/mapView.html', {'long': long, 'lat': lat, 'p_content' : p_content, 'p_visit_road' : p_visit_road})
 
 def mapAll(request):
     parks = []

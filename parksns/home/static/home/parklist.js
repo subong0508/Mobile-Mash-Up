@@ -81,11 +81,27 @@ function makelistchild(parkobject,x){
     input2.setAttribute('id', 'lat');
     input2.setAttribute('value', parkobject.parklatitude[x]);
 
+    input3 = document.createElement('input');
+    input3.setAttribute('type', 'hidden');
+    input3.setAttribute('name', 'p_content');
+    input3.setAttribute('id', 'p_content');
+    input3.setAttribute('value', parkobject.parkcontent[x]);
+
+    
+    input4 = document.createElement('input');
+    input4.setAttribute('type', 'hidden');
+    input4.setAttribute('name', 'p_visit_road');
+    input4.setAttribute('id', 'p_visit_road');
+    input4.setAttribute('value', parkobject.parkvisitroad[x]);
+    
+
     btn1 = document.createElement('button');
     btn1.innerHTML='Map';
     btn1.setAttribute('class','bt3');
     form1.appendChild(input1);
     form1.appendChild(input2);
+    form1.appendChild(input3);
+    form1.appendChild(input4);
     form1.appendChild(btn1);
     btnschild.appendChild(form1);
 

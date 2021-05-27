@@ -2,8 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Kakao 지도 시작하기</title>
+	<title>공원 지도</title>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7b18f668ae5f10154eafbf3d44084f2d"></script>
+	<style>
+		body {word-wrap: break-word;}
+		.overlaybox {white-space: normal; color:white;position:absolute;width:360px;height:300px;padding:15px 10px;background-color: #2b2d36; word-break:break-all; word-wrap:break-word; border:2px solid yellow;height:auto;}
+		.overlaybox .boxtitle {color:#fff;font-size:16px;font-weight:bold;margin-bottom:8px;border:1px solid red;height:auto;}
+		.overlaybox .first {color:#fff;margin-bottom:8px;word-wrap:break-word;font-size:1px;border:1px solid red;height:auto;} 
+	</style>
 </head>
 <body>
 	<div id="map" style="width:1080px;height:720px;"></div>
@@ -19,7 +25,7 @@
 		};
 
 		var map = new kakao.maps.Map(container, options);
-
+			
 		var markerPosition = new kakao.maps.LatLng({{ lat }}, {{ long }});
 
 		// 마커 생성
@@ -29,9 +35,42 @@
 
 		marker.setMap(map);
 
-		var clickLine;
-		var distanceOverlay;
-		var startPosition;
+		////////////////////////////////////////////////
+		// 커스텀 오버레이에 표시할 내용입니다     
+		// HTML 문자열 또는 Dom Element 입니다
+		var con = "{{p_content}}";
+		var vr = "{{p_visit_road}}";
+		var content = 
+					'<div class="overlaybox">' + 
+					'    <div class="boxtitle">공원 설명</div>' +
+					'    <div class="first">' +
+							con + '<br>' +
+					'	 </div>' +
+					'    <div class="boxtitle">찾아오는 길</div>' +
+					'    <div class="first">' +
+							vr + '<br>' +
+					'	 </div>' +
+				'</div>';
+		
+		// 커스텀 오버레이가 표시될 위치입니다 
+		var position = new kakao.maps.LatLng({{ lat }}, {{ long }});  
+
+		// 커스텀 오버레이를 생성합니다
+		var customOverlay = new kakao.maps.CustomOverlay({
+			position: position,
+			content: content,
+			xAnchor: 0.3,
+			yAnchor: 0.91
+		});
+
+		// 커스텀 오버레이를 지도에 표시합니다
+		customOverlay.setMap(map);
+		////////////////////////////////////////////////
+
+		//var clickLine;
+		//var distanceOverlay;
+		//var startPosition;
+
 		// getPosition().then(function() => {
 		// 	startPosition = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
 		// 	});

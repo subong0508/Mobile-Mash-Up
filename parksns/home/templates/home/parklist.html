@@ -13,6 +13,8 @@
         let parkdistance=[];
         let parklongitude=[];
         let parklatitude=[];
+        let parkcontent=[];
+        let parkvisitroad=[];
         function loadParks() {
             {% for park in parks %}
                 parkname.push("{{ park.p_park }}");
@@ -20,12 +22,16 @@
                 parkdistance.push("{{ park.distance }}");
                 parklongitude.push("{{ park.long }}");
                 parklatitude.push("{{ park.lat }}");
+                parkcontent.push("{{ park.p_content }}");
+                parkvisitroad.push("{{ park.p_visit_road }}");
             {% endfor %}
             parkobject.parkname = parkname;
             parkobject.parkdistance = parkdistance;
             parkobject.parkimgsrc = parkimgsrc;
             parkobject.parklongitude = parklongitude;
             parkobject.parklatitude = parklatitude;
+            parkobject.parkcontent = parkcontent; //GET p_list_content
+            parkobject.parkvisitroad = parkvisitroad; //GET visit_road
             console.log(parkobject);
             makelistchild(parkobject,1);
         }

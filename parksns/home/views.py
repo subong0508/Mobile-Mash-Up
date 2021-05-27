@@ -24,10 +24,15 @@ def location(request):
                     park['distance'] = str(park['dist'] * 1000) + 'm'
                 else:
                     park['distance'] = str(park['dist']) + 'km'
+                ##############################################    
+                park['p_content'] = str(park['p_list_content']).replace("\n", "")
+                park['p_content'] = str(park['p_content']).replace("\"", "")
+                park['p_visit_road'] = str(park['visit_road']).replace("\n", "")
+                ##############################################
                 parks.append(park)
     parks = sorted(parks, key=lambda park: park['dist'])
     return render(request, 'home/parklist.html', {'parks': parks })
-
+"""
 def map(request):
     long = float(request.GET['long'])
     lat = float(request.GET['lat'])
@@ -43,3 +48,4 @@ def mapAll(request):
                 park['lat'] = float(park['latitude'])
                 parks.append(park)
     return render(request, 'home/mapAllView.html', {'parks': parks})
+"""

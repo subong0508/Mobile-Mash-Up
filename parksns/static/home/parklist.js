@@ -64,13 +64,6 @@ function makelistchild(parkobject,x){
     parkList.appendChild(div);
 }
 
-// function goChat(ev) {
-//     let httpRequest = new XMLHttpRequest();
-//     console.log("goChat");
-//     httpRequest.open("POST", "/chat/" + ev.currentTarget.parkIdx + "/");
-//     httpRequest.send();
-// }
-
 function makelist(parkobject){
     let listnum;
     if(document.getElementById('numbers').value==='직접입력'){

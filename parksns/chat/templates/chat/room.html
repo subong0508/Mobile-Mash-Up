@@ -11,7 +11,15 @@
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_num|json_script:"room-num" }}
     <script>
-        const userName = document.cookie.split('=')[1];
+        const arr = document.cookie.split('=');
+        let idx = -1;
+        for(let i=0;i<arr.length;i++) {
+            if(arr[i].indexOf("user") != -1) {
+                idx = i+1;
+            }
+        }
+
+        const userName = arr[idx];
 
         const roomName = JSON.parse(document.getElementById('room-num').textContent);
 

@@ -53,7 +53,8 @@ function makelistchild(parkobject,x){
 
     btn2 = document.createElement('button');
     btn2.setAttribute('class', 'chatButton');
-    btn2.innerHTML='채팅';
+    btn2.innerHTML= '채팅';
+    btn2.parkIdx = parkobject.parkIdx[x];
 
     link.appendChild(btn2);
 
@@ -62,6 +63,13 @@ function makelistchild(parkobject,x){
     div.appendChild(btnschild);
     parkList.appendChild(div);
 }
+
+// function goChat(ev) {
+//     let httpRequest = new XMLHttpRequest();
+//     console.log("goChat");
+//     httpRequest.open("POST", "/chat/" + ev.currentTarget.parkIdx + "/");
+//     httpRequest.send();
+// }
 
 function makelist(parkobject){
     let listnum;

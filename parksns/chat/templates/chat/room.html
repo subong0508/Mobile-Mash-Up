@@ -11,6 +11,8 @@
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_num|json_script:"room-num" }}
     <script>
+        const userName = document.cookie.split('=')[1];
+
         const roomName = JSON.parse(document.getElementById('room-num').textContent);
 
         const chatSocket = new WebSocket(
@@ -41,7 +43,7 @@
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': userName + ': ' + message
             }));
             messageInputDom.value = '';
         };

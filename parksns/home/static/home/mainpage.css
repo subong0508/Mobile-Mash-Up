@@ -1,0 +1,211 @@
+/*전체 스타일*/
+body{
+    width : 1020px;
+    margin : 0 auto;
+    height: 100%;
+    background-color: #00C776;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+/*제목 글씨*/
+#in2h3{
+    font-size: 50px;
+    width: 720px;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*제목*/
+.box2 {
+    display: flex;
+    width: 1020px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    justify-content: space-between;
+}
+
+.btgroup{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+}
+
+/*제목 버튼*/
+.bt2{
+    background-color: white;
+    font-family: 'Nanum Myeongjo', serif;
+    color: #00C776;
+    border-radius: 60px;
+    width: 100px;
+    height: 35px;
+    bottom: 25px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 0px white;
+    transition: box-shadow 0.1s linear;
+}
+.bt2:hover{
+    box-shadow: 0px 0px 20px  white;
+}
+
+/*흰 배경*/
+.whiteBack{
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*공원 개수 조절 부분*/
+.set{
+    width: 1020px;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/*공원개수 글씨*/
+.listlabel {
+    font-size: 25px;
+    font-family: 'Nanum Myeongjo', serif;
+    color: #00C776;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+/*공원 개수 선택*/
+#numbers {
+    width: 50px;
+    height: 30px;
+    appearance: none;
+    border-bottom: double #00C776;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 25px;
+    color: #00C776;
+}
+
+/*공원 목록*/
+#parkList {
+    width: 1020px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/*개수 입력 칸*/
+#inputnb {
+    margin-top: 3px;
+    display: none;
+    width: 120px;
+    height: 20px;
+    margin-left: 30px;
+    border-bottom: 2px solid #00C776;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+/*개수 입력시 변경 버튼*/
+#change{
+    margin-top: 20px;
+    margin-left: 10px;
+    display: none;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    background-color: #00C776;
+    color: white;
+    border-radius: 15px;
+}
+
+/*공원 목록 사진*/
+.parkimg{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 20px;
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+}
+
+/*공원 목록 개별*/
+.parkdic{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 1020px;
+    border-bottom: 2px solid #00C776;
+}
+
+/*공원 목록 사진*/
+.imgar{
+    text-align: center;
+    width: 220px;
+    height: 210px;
+}
+
+/*공원 설명*/
+.explain{
+    display: inline-block;
+    width: 500px;
+}
+
+/*공원 이름*/
+.in2li{
+    font-family: 'Nanum Myeongjo', serif;
+    padding-top: 17px;
+    color: #00C776;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.distText{
+    font-family: 'Nanum Myeongjo', serif;
+    padding-top: 17px;
+    color: #00C776;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+/*공원 목록 버튼 2개*/
+.btnschild{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 320px;
+    height: 175px;
+}
+
+/*공원 목록 버튼 개별*/
+.bt3 {
+    width: 250px;
+    height: 50px;
+    font-weight: bold;
+    border: none;
+    border-radius: 60px;
+    background-color: #00C776;
+    color: white;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 20px;
+    box-shadow: 0px 0px 0px #00C776;
+    transition: box-shadow 0.1s linear;
+}
+.bt3:hover{
+    box-shadow: 0px 0px 10px #00C776;
+}
+#end{
+    text-align: center;
+    font-family: 'Nanum Myeongjo', serif;
+}

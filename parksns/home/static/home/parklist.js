@@ -20,13 +20,12 @@ document.addEventListener('DOMContentLoaded',function() {
 function makelistchild(parkobject,x){
     let parkList = document.getElementById("parkList");
     let list, div, name, img, dist, chat, map;
-    list = document.createElement("ul");
+    list = document.createElement("div");
     div = document.createElement("div");
-    div.style.border = "1px solid black";
     div.setAttribute('class','parkdic');
-    names = document.createElement("li");
+    names = document.createElement("div");
     names.setAttribute('class','in2li');
-    names.innerHTML = "공원 이름:" + parkobject.parkname[x];
+    names.innerHTML = parkobject.parkname[x];
     list.appendChild(names);
 
     img = document.createElement("img");
@@ -38,9 +37,9 @@ function makelistchild(parkobject,x){
     divimg.appendChild(img);
     div.appendChild(divimg);
 
-    dist = document.createElement("li");
-    dist.innerHTML = "거리:" + parkobject.parkdistance[x];
-    dist.setAttribute('class','in2li');
+    dist = document.createElement("div");
+    dist.innerHTML = parkobject.parkdistance[x];
+    dist.setAttribute('class','distText');
     list.appendChild(dist);
 
     /*list.innerHTML += "<li>";

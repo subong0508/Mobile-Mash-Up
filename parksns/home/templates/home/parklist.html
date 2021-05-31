@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>공원 목록</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'home/main.css' %}"/>
     <script type="text/javascript" src="{% static 'home/parklist.js' %}"></script>
     <script>
         let realPosition=["{{realLong}}", "{{realLat}}"];
@@ -50,6 +49,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&family=Song+Myung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/mainpage.css' %}"/>
 </head>
 <body id="index2">
    <div class="box2">
@@ -60,23 +60,25 @@
             <button class="bt2">Map</button>
         </div>
     </div>
-    <div class="set">
-    <form>
-        <label for="numbers" class="listlabel" >공원 개수</label>
-        <select id="numbers">
-            <option>1</option>
-            <option>5</option>
-            <option>10</option>
-            <option>15</option>
-            <option>20</option>
-            <option>직접입력</option>
-        </select>
-        <br>
-        <input type="text" id="inputnb"/>
-        <input type="button" id="change" value="변경"/>
-    </form>
-    </div>
-    <div id="parkList" class="set">
+    <div class="whiteBack">
+        <div class="set">
+        <form>
+            <label for="numbers" class="listlabel" >공원 개수</label>
+            <select id="numbers">
+                <option>1</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>직접입력</option>
+            </select>
+            <br>
+            <input type="text" id="inputnb"/>
+            <input type="button" id="change" value="변경"/>
+        </form>
+        </div>
+        <div id="parkList">
+        </div>
     </div>
 </body>
 </html> 

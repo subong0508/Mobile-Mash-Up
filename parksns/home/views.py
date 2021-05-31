@@ -31,7 +31,7 @@ def location(request):
                 ##############################################
                 parks.append(park)
     parks = sorted(parks, key=lambda park: park['dist'])
-    return render(request, 'home/parklist.html', {'parks': parks })
+    return render(request, 'home/parklist.html', {'parks': parks, 'realLong': long, 'realLat': lat })
 """
 def map(request):
     long = float(request.GET['long'])

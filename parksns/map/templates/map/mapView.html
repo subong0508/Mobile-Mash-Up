@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
 	<meta charset="utf-8"/>
@@ -10,38 +11,99 @@
 		.overlaybox .boxtitle {color:#fff;font-size:16px;font-weight:bold;margin-bottom:8px;border:1px solid red;height:auto;}
 		.overlaybox .first {color:#fff;margin-bottom:8px;word-wrap:break-word;font-size:1px;border:1px solid red;height:auto;} 
 	</style>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&family=Song+Myung&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div id="map" style="width:1080px;height:720px;"></div>
-	<input type="hidden" id="myLong"></input>
-	<input type="hidden" id="myLat"></input>
-
+	<p id="parkName">{{p_park}}</p>
+	<div id="map" style="width:1020px;height:450px;"></div>
+	<p id="warning">지도의 마커를 누르면 정보를 볼 수 있습니다</p>
+	<div id="row">
+		<div class="distanceTime">
+			<p class="from">나의 위치로부터</p>
+			<div id="distanceAll">{{p_distance}}</div>
+			<p class="from">걸어서</p>
+			<div id="walkTime"></div>
+			<p class="from">자전거로</p>
+			<div id="bicycleTime"></div>
+		</div>
+		<div class="about">
+			<div class="content">
+				<p class="aboutTitle">공원 설명</p>
+				<div class="aboutPark"></div>
+			</div>
+			<div class="content">
+				<p class="aboutTitle">사이트</p>
+				<div class="aboutPark">
+					<a class="aboutParkUrl"></a>
+				</div>
+			</div>
+			<div class="content">
+				<p class="aboutTitle">주소</p>
+				<div class="aboutPark"></div>
+			</div>
+		</div>
+	</div>
 	<script>
 		// 맵 생성
+		var lat = "{{lat}}";
+		var long = "{{long}}";
 		var container = document.getElementById('map');
 		var options = {
-			center: new kakao.maps.LatLng({{ lat }}, {{ long }}),
+			center: new kakao.maps.LatLng(lat, long),
 			level: 3
 		};
 
 		var map = new kakao.maps.Map(container, options);
 			
-		var markerPosition = new kakao.maps.LatLng({{ lat }}, {{ long }});
+		var markerPosition = new kakao.maps.LatLng(lat, long);
 
-		// 마커 생성
+		// 마커 생성(공원 위치)
 		var marker = new kakao.maps.Marker({
 			position: markerPosition
 		});
 
 		marker.setMap(map);
 
+		// 마커 생성(나의 위치)
+		var realLong = "{{realLong}}";
+		var realLat = "{{realLat}}";
+		var myMarkerPosition = new kakao.maps.LatLng(realLat, realLong);
+		var myMarker = new kakao.maps.Marker({
+			position: myMarkerPosition
+		});
+		myMarker.setMap(map);
+
+		// 선을 구성하는 좌표 배열
+		var linePath = [markerPosition,	myMarkerPosition];
+		console.log(linePath);
+
+		// 지도에 표시할 선을 생성합니다
+		var polyline = new kakao.maps.Polyline({
+			path: linePath,
+			strokeWeight: 5,
+			strokeColor: '#DB4040',
+			strokeOpacity: 1,
+			strokeStyle: 'solid'
+		});
+
+		polyline.setMap(map);
+
+		var realDistance = Math.round(polyline.getLength());
+
 		////////////////////////////////////////////////
 		// 커스텀 오버레이에 표시할 내용입니다     
 		// HTML 문자열 또는 Dom Element 입니다
+		var parkTitle = "{{p_park}}";
 		var con = "{{p_content}}";
 		var vr = "{{p_visit_road}}";
 		var content = 
 					'<div class="overlaybox">' + 
+					'	 <div class="title">' +
+							parkTitle + 
+					'		<div class="close" onclick="closeOverlay()" title="닫기">X</div>' +
+					'	 </div>' +	
 					'    <div class="boxtitle">공원 설명</div>' +
 					'    <div class="first">' +
 							con + '<br>' +
@@ -51,9 +113,9 @@
 							vr + '<br>' +
 					'	 </div>' +
 				'</div>';
-		
+
 		// 커스텀 오버레이가 표시될 위치입니다 
-		var position = new kakao.maps.LatLng({{ lat }}, {{ long }});  
+		var position = new kakao.maps.LatLng(lat, long);  
 
 		// 커스텀 오버레이를 생성합니다
 		var customOverlay = new kakao.maps.CustomOverlay({
@@ -63,105 +125,58 @@
 			yAnchor: 0.91
 		});
 
-		// 커스텀 오버레이를 지도에 표시합니다
-		customOverlay.setMap(map);
-		////////////////////////////////////////////////
+		// 클릭하면 커스텀 오버레이가 표시됩니다
+		kakao.maps.event.addListener(marker, 'click', function(){
+			customOverlay.setMap(map);
+		});
 
-		//var clickLine;
-		//var distanceOverlay;
-		//var startPosition;
+		function closeOverlay() {
+			customOverlay.setMap(null);     
+		}
 
-		// getPosition().then(function() => {
-		// 	startPosition = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
-		// 	});
+		// 시간 계산하기
+		var walkkTime = realDistance / 67 | 0;
+		var walkHour = '', walkMin = '';
+		if (walkkTime > 60) {
+        	walkHour = Math.floor(walkkTime / 60) + '시간 '
+		}
+		walkMin = walkkTime % 60 + '분'
+		document.getElementById("walkTime").innerHTML = walkHour + walkMin;
 
+		var bycicleTime = realDistance / 227 | 0;
+ 	    var bycicleHour = '', bycicleMin = '';
+		if (bycicleTime > 60) {
+    	    bycicleHour = Math.floor(bycicleTime / 60) + '시간 '
+    	}
+		bycicleMin = bycicleTime % 60 + '분'
+		document.getElementById("bicycleTime").innerHTML = bycicleHour + bycicleMin;
 
-		// //var startPosition = new kakao.maps.LatLng();
-		// clickLine = new kakao.maps.Polyline({
-		// 	map: map,
-		// 	path: [startPosition],
-		// 	strokeWeight: 3,
-		// 	strokeColor: '#db4040',
-		// 	strokeOpacity: 1,
-		// 	strokeStyle: 'solid'
-		// });
+		// 데이터 값이 None인지 확인하기
+		var parkContent = "";
+		if ("{{p_content}}" == "None") {
+			parkContent = '공원 정보가 존재하지 않습니다.';
+		} else {
+			parkContent = "{{p_content}}";
+		}
+		document.getElementsByClassName("aboutPark")[0].innerHTML = parkContent;
 
-		// displayCircleDot(startPosition, 0);
+		var parkurlCheck = "";
+		if ("{{parkurl}}" == "None") {
+			parkurlCheck = '사이트가 존재하지 않습니다.';
+		} else {
+			parkurlCheck = "{{parkurl}}"
+			document.getElementsByClassName("aboutParkUrl")[0].setAttribute('href', "{{parkurl}}")
+		}
+		document.getElementsByClassName("aboutParkUrl")[0].innerHTML = parkurlCheck;
 
-		// var endPosition = new kakao.maps.LatLng({{ lat }}, {{ long }});
-		// path.push(endPosition);
-
-		// var distance = Math.round(clickLine.getLength());
-
-		// displayCircleDot(endPosition, distance);
-		// content = getTimeHTML(distance);
-
-		// showDistance(content, path[1]);
-
-		// function getPosition() {
-		// 	return new Promise((res, rej) => {
-		// 		navigator.geolocation.getCurrentPosition(res, rej);
-		// 	});
-		// }
-
-		// function showDistance(content, position) {
-		// 	distanceOverlay.setPosition(position);
-		// 	distanceOverlay.setContent(content);
-		// }
-
-		// function displayCircleDot(position, distance) {
-		// 	var circleOverlay = new kakao.maps.CustomOverlay({
-		// 		content: '<span class="dot"></span>',
-		// 		position: position,
-		// 		zIndex: 1
-		// 	});
-
-		// 	circleOverlay.setMap(map);
-
-		// 	if (distance > 0) {
-		// 		var distanceOverlay = new kakao.maps.CustomOverlay({
-		// 			content: '<div class="dotOverlay">거리 <span class="number">' + distance + '</span>m</div>',
-		// 			position: position,
-		// 			yAnchor: 1,
-		// 			zIndex: 2
-		// 		});
-
-		// 		distanceOverlay.setMap(map);
-		// 	}
-		// }
-
-		// function getTimeHTML(distance) {
-		// 	var walkkTime = distance / 67 | 0;
-		// 	var walkHour = '', walkMin = '';
-
-		// 	if (walkkTime > 60) {
-		// 		walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 '
-		// 	}
-		// 	walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
-
-		// 	var bycicleTime = distance / 227 | 0;
-		// 	var bycicleHour = '', bycicleMin = '';
-
-		// 	if (bycicleTime > 60) {
-		// 		bycicleHour = '<span class="number">' + Math.floor(bycicleTime / 60) + '</span>시간 '
-		// 	}
-		// 	bycicleMin = '<span class="number">' + bycicleTime % 60 + '</span>분'
-
-		// 	var content = '<ul class="dotOverlay distanceInfo">';
-		// 	content += '    <li>';
-		// 	content += '        <span class="label">총거리</span><span class="number">' + distance + '</span>m';
-		// 	content += '    </li>';
-		// 	content += '    <li>';
-		// 	content += '        <span class="label">도보</span>' + walkHour + walkMin;
-		// 	content += '    </li>';
-		// 	content += '    <li>';
-		// 	content += '        <span class="label">자전거</span>' + bycicleHour + bycicleMin;
-		// 	content += '    </li>';
-		// 	content += '</ul>'
-
-		// 	return content;
-		// }
-
+		var parkaddCheck = "";
+		if ("{{parkadd}}" == "None") {
+			parkaddCheck = '주소 정보가 존재하지 않습니다.';
+		} else {
+			parkaddCheck = "{{parkadd}}";
+		}
+		document.getElementsByClassName("aboutPark")[2].innerHTML = parkaddCheck;
 	</script>
+	<link rel="stylesheet" type="text/css" href="{% static 'map/mapDesign.css' %}"/>
 </body>
 </html>

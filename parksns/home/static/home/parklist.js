@@ -93,7 +93,48 @@ function makelistchild(parkobject,x){
     input4.setAttribute('name', 'p_visit_road');
     input4.setAttribute('id', 'p_visit_road');
     input4.setAttribute('value', parkobject.parkvisitroad[x]);
+
+    input5 = document.createElement('input');
+    input5.setAttribute('type', 'hidden');
+    input5.setAttribute('name', 'p_park');
+    input5.setAttribute('id', 'p_park');
+    input5.setAttribute('value', parkobject.parkname[x]);
+
+    input6 = document.createElement('input');
+    input6.setAttribute('type', 'hidden');
+    input6.setAttribute('name', 'realLong');
+    input6.setAttribute('id', 'realLong');
+    input6.setAttribute('value', realPosition[0]);
+
+    input7 = document.createElement('input');
+    input7.setAttribute('type', 'hidden');
+    input7.setAttribute('name', 'realLat');
+    input7.setAttribute('id', 'realLat');
+    input7.setAttribute('value', realPosition[1]);
+
+    input8 = document.createElement('input');
+    input8.setAttribute('type', 'hidden');
+    input8.setAttribute('name', 'distance');
+    input8.setAttribute('id', 'distance');
+    input8.setAttribute('value', parkobject.parkdistance[x]);
+
+    input9 = document.createElement('input');
+    input9.setAttribute('type', 'hidden');
+    input9.setAttribute('name', 'parktel');
+    input9.setAttribute('id', 'parktel');
+    input9.setAttribute('value', parkobject.parktel[x]);
+
+    input10 = document.createElement('input');
+    input10.setAttribute('type', 'hidden');
+    input10.setAttribute('name', 'parkurl');
+    input10.setAttribute('id', 'parkurl');
+    input10.setAttribute('value', parkobject.parkurl[x]);
     
+    input11 = document.createElement('input');
+    input11.setAttribute('type', 'hidden');
+    input11.setAttribute('name', 'parkadd');
+    input11.setAttribute('id', 'parkadd');
+    input11.setAttribute('value', parkobject.parkadd[x]);
 
     btn1 = document.createElement('button');
     btn1.innerHTML='Map';
@@ -102,6 +143,13 @@ function makelistchild(parkobject,x){
     form1.appendChild(input2);
     form1.appendChild(input3);
     form1.appendChild(input4);
+    form1.appendChild(input5);
+    form1.appendChild(input6);
+    form1.appendChild(input7);
+    form1.appendChild(input8);
+    form1.appendChild(input9);
+    form1.appendChild(input10);
+    form1.appendChild(input11);
     form1.appendChild(btn1);
     btnschild.appendChild(form1);
 

@@ -1,0 +1,12 @@
+body {
+    width : 98%;
+    margin : 0 auto;
+    background-color: #00C776;
+    font-family: 'Nanum Myeongjo', serif;
+    color: white;
+}
+#map {
+    border-radius: 10px;
+    object-fit: cover;
+    margin-top: 10px;
+}

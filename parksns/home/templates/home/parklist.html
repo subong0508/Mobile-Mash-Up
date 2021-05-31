@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'home/main.css' %}"/>
     <script type="text/javascript" src="{% static 'home/parklist.js' %}"></script>
     <script>
+        let realPosition=["{{realLong}}", "{{realLat}}"];
         let parkobject={};
         let parkname=[];
         let parkimgsrc=[];
@@ -15,6 +16,9 @@
         let parklatitude=[];
         let parkcontent=[];
         let parkvisitroad=[];
+        let parktel=[];
+        let parkurl=[];
+        let parkadd=[];
         function loadParks() {
             {% for park in parks %}
                 parkname.push("{{ park.p_park }}");
@@ -24,6 +28,9 @@
                 parklatitude.push("{{ park.lat }}");
                 parkcontent.push("{{ park.p_content }}");
                 parkvisitroad.push("{{ park.p_visit_road }}");
+                parktel.push("{{ park.p_admintel }}");
+                parkurl.push("{{ park.template_url }}");
+                parkadd.push("{{ park.p_addr }}");
             {% endfor %}
             parkobject.parkname = parkname;
             parkobject.parkdistance = parkdistance;
@@ -32,6 +39,9 @@
             parkobject.parklatitude = parklatitude;
             parkobject.parkcontent = parkcontent; //GET p_list_content
             parkobject.parkvisitroad = parkvisitroad; //GET visit_road
+            parkobject.parktel = parktel;
+            parkobject.parkurl = parkurl;
+            parkobject.parkadd = parkadd;
             console.log(parkobject);
             makelistchild(parkobject,1);
         }

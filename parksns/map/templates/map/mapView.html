@@ -6,11 +6,12 @@
 	<title>공원 지도</title>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7b18f668ae5f10154eafbf3d44084f2d"></script>
 	<style>
-		body {word-wrap: break-word;}
-		.overlaybox {white-space: normal; color:white;position:absolute;width:360px;height:300px;padding:15px 10px;background-color: #2b2d36; word-break:break-all; word-wrap:break-word; border:2px solid yellow;height:auto;}
+		/*body {word-wrap: break-word;}
+		.overlaybox {white-space: normal; color:white;position:absolute;width:360px;height:300px;padding:15px 10px;background-color: #00C776; word-break:break-all; word-wrap:break-word; border:2px solid yellow;height:auto;}
 		.overlaybox .boxtitle {color:#fff;font-size:16px;font-weight:bold;margin-bottom:8px;border:1px solid red;height:auto;}
-		.overlaybox .first {color:#fff;margin-bottom:8px;word-wrap:break-word;font-size:1px;border:1px solid red;height:auto;} 
+		.overlaybox .first {color:#fff;margin-bottom:8px;word-wrap:break-word;font-size:1px;border:1px solid red;height:auto;} */
 	</style>
+	<link rel="stylesheet" type="text/css" href="{% static 'map/mapDesign.css' %}"/>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&family=Song+Myung&display=swap" rel="stylesheet">
@@ -100,9 +101,9 @@
 		var vr = "{{p_visit_road}}";
 		var content = 
 					'<div class="overlaybox">' + 
-					'	 <div class="title">' +
-							parkTitle + 
-					'		<div class="close" onclick="closeOverlay()" title="닫기">X</div>' +
+					'	 <div class="title">' + '<b>' +
+							parkTitle + '</b>' +
+					'		<button class="close" onclick="closeOverlay()" title="닫기">닫기</button>' +
 					'	 </div>' +	
 					'    <div class="boxtitle">공원 설명</div>' +
 					'    <div class="first">' +
@@ -177,6 +178,6 @@
 		}
 		document.getElementsByClassName("aboutPark")[2].innerHTML = parkaddCheck;
 	</script>
-	<link rel="stylesheet" type="text/css" href="{% static 'map/mapDesign.css' %}"/>
+	
 </body>
 </html>

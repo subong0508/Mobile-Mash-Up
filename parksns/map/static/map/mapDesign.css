@@ -4,6 +4,7 @@ body {
     background-color: #00C776;
     font-family: 'Nanum Myeongjo', serif;
     color: white;
+    word-wrap: break-word;
 }
 #parkName {
     text-align: center;
@@ -76,4 +77,56 @@ body {
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 15px;
+}
+
+/* 추가 */
+.title{
+    font-size:18px;
+    padding : 2px;
+}
+.overlaybox {
+    white-space: normal; 
+    color:white;
+    position:absolute;
+    width:360px;
+    height:300px;
+    padding:15px 10px;
+    border-radius: 6px;
+    background-color: #00C776; 
+    word-break:break-all; 
+    word-wrap:break-word; 
+    border:2px solid white;
+    height:auto;}
+.overlaybox:hover{
+        box-shadow: 0px 0px 20px  white;
+    }
+.overlaybox .boxtitle {
+    color:#fff;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:8px;
+    border:1.5px solid #06b46f;
+    border-radius: 2px;
+    height:auto;}
+.overlaybox .first {
+    color:#fff;
+    margin-bottom:10px;
+    word-wrap:break-word;
+    font-size:1px;
+    border:1.5px solid #06b46f;
+    border-radius: 2px;
+    height:auto;} 
+.close{
+    background-color: #0aa165;
+    color:white;
+    justify-content:center;
+    margin : 3px;
+    height : 18px;
+    border: rgb(240, 228, 228);
+    border-radius:2px;
+    display: inline-block;
+    font-size: 10px;
+}
+.close:hover {
+    background-color: #06b46f;
 }

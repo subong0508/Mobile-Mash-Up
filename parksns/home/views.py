@@ -27,6 +27,7 @@ def location(request):
                 ##############################################    
                 park['p_content'] = str(park['p_list_content']).replace("\n", "")
                 park['p_content'] = str(park['p_content']).replace("\"", "")
+                park['p_content'] = str(park['p_content']).replace("\'", "")
                 park['p_visit_road'] = str(park['visit_road']).replace("\n", "")
                 ##############################################
                 parks.append(park)

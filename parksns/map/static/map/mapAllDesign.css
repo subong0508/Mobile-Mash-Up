@@ -3,7 +3,7 @@ body {
     margin : 0 auto;
     background-color: #00C776;
     font-family: 'Nanum Myeongjo', serif;
-    color: white;
+    color: black;
 }
 #map {
     border-radius: 10px;

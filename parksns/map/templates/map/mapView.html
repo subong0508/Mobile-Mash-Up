@@ -97,7 +97,7 @@
 		// 커스텀 오버레이에 표시할 내용입니다     
 		// HTML 문자열 또는 Dom Element 입니다
 		var parkTitle = "{{p_park}}";
-		var con = "{{p_content}}";
+		var parktel = "{{parktel}}";
 		var vr = "{{p_visit_road}}";
 		var content = 
 					'<div class="overlaybox">' + 
@@ -105,13 +105,13 @@
 							parkTitle + '</b>' +
 					'		<button class="close" onclick="closeOverlay()" title="닫기">닫기</button>' +
 					'	 </div>' +	
-					'    <div class="boxtitle">공원 설명</div>' +
-					'    <div class="first">' +
-							con + '<br>' +
-					'	 </div>' +
 					'    <div class="boxtitle">찾아오는 길</div>' +
 					'    <div class="first">' +
 							vr + '<br>' +
+					'	 </div>' +
+					'    <div class="boxtitle">공원 전화번호</div>' +
+					'    <div class="first">' +
+							parktel + '<br>' +
 					'	 </div>' +
 				'</div>';
 

@@ -29,6 +29,7 @@ def location(request):
                 park['p_content'] = str(park['p_content']).replace("\"", "")
                 park['p_content'] = str(park['p_content']).replace("\'", "")
                 park['p_visit_road'] = str(park['visit_road']).replace("\n", "")
+                park['p_visit_road'] = str(park['p_visit_road']).replace("\'", "")
                 ##############################################
                 parks.append(park)
     parks = sorted(parks, key=lambda park: park['dist'])

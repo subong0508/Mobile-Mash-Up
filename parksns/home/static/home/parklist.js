@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded',function() {
     document.getElementById('numbers').addEventListener('change',()=>makelist(parkobject));
-    const btselect = document.querySelectorAll("button")
+    const btselect = document.querySelectorAll("button");
     for (let a = 0; a < btselect.length; a++) {
         document.querySelectorAll("button")[a].onclick = function (e) {
             if (e.target.innerText === '공원 둘러보기') {

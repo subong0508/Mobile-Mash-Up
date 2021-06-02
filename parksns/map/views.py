@@ -27,3 +27,4 @@ def mapAll(request):
                 park['lat'] = float(park['latitude'])
                 parks.append(park)
     return render(request, 'map/mapAllView.html', {'parks': parks})
+

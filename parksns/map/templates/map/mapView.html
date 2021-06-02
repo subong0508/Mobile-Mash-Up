@@ -5,12 +5,18 @@
 	<meta charset="utf-8"/>
 	<title>공원 지도</title>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7b18f668ae5f10154eafbf3d44084f2d"></script>
-	<style>
-		/*body {word-wrap: break-word;}
-		.overlaybox {white-space: normal; color:white;position:absolute;width:360px;height:300px;padding:15px 10px;background-color: #00C776; word-break:break-all; word-wrap:break-word; border:2px solid yellow;height:auto;}
-		.overlaybox .boxtitle {color:#fff;font-size:16px;font-weight:bold;margin-bottom:8px;border:1px solid red;height:auto;}
-		.overlaybox .first {color:#fff;margin-bottom:8px;word-wrap:break-word;font-size:1px;border:1px solid red;height:auto;} */
-	</style>
+	<script>
+		let myLong = "{{realLong}}";
+		let myLat = "{{realLat}}";
+		let myLongLat = {};
+		function parklistpage(){
+			myLongLat["realLong"] = myLong;
+			myLongLat["realLat"] = myLat;
+			makelistchild(myLongLat);
+		}
+		document.addEventListener("DOMContentLoaded", parklistpage);
+	</script>
+	<script type="text/javascript" src="{% static 'map/mapView.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'map/mapDesign.css' %}"/>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
@@ -18,6 +24,7 @@
 </head>
 <body>
 	<p id="parkName">{{p_park}}</p>
+	<div id="backbutton"></div>
 	<div id="map" style="width:1020px;height:450px;"></div>
 	<p id="warning">지도의 마커를 누르면 정보를 볼 수 있습니다</p>
 	<div id="row">

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>모든 공원</title>
     <link rel="stylesheet" type="text/css" href="{% static 'map/mapAllDesign.css' %}"/>
+    <script type="text/javascript" src="{% static 'map/mapView.js' %}"></script>
     <script>
         let parkobject={};
         let parkname=[];
@@ -28,11 +29,45 @@
                 positions.push(obj);
             }
         }
+		document.addEventListener("DOMContentLoaded", getLocation);
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } 
+        }
+        
+        function showPosition(position) {
+            document.getElementById("long").value = position.coords.longitude;
+            document.getElementById("lat").value = position.coords.latitude;
+            document.getElementById("init").innerHTML = "뒤로 가기";
+            document.getElementById("init").disabled = false;
+        }
         document.addEventListener("DOMContentLoaded", makeList);
+
     </script>
+    <style>
+    .bt{
+        background-color: #0aa165;
+        color:white;
+        justify-content:center;
+        margin : 3px;
+        border: rgb(240, 228, 228);
+        border-radius:2px;
+        display: inline-block;
+        font-size: 20px;
+    }
+    .bt:hover {
+        background-color: #06b46f;}
+    </style>
 </head>
 <body>
     <div id="map" style="width:100%;height:700px;"></div>
+    <form action="location" method="get">
+        <input type="hidden" name="long" id="long">
+        <input type="hidden" name="lat" id="lat">
+        <button class="bt" id="init" disabled="disabled">로딩중...</button>
+    </form>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7b18f668ae5f10154eafbf3d44084f2d"></script>
     <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div  

@@ -1,87 +1,41 @@
-// // 맵 생성
-// var lat = "{{lat}}";
-// var long = "{{long}}";
-// var container = document.getElementById('map');
-// var options = {
-//     center: new kakao.maps.LatLng(lat, long),
-//     level: 3
-// };
 
-// var map = new kakao.maps.Map(container, options);
-    
-// var markerPosition = new kakao.maps.LatLng(lat, long);
+document.addEventListener(makelistchild,function() {
+    const btselect = document.querySelectorAll("button")
+    for (let a = 0; a < btselect.length; a++) {
+        document.querySelectorAll("button")[a].onclick = function (e) {
+            if (e.target.innerText === '뒤로 가기') {
+                location.href = "location_";
+            }
+        }
+    }
+});
 
-// // 마커 생성(공원 위치)
-// var marker = new kakao.maps.Marker({
-//     position: markerPosition
-// });
+function makelistchild(myLongLat){
+    let backbutton = document.getElementById("backbutton");
 
-// marker.setMap(map);
+    form1 = document.createElement('form');
+    form1.setAttribute('action', 'location');
+    form1.setAttribute('method', 'get');
 
-// // 마커 생성(나의 위치)
-// var realLong = "{{realLong}}";
-// var realLat = "{{realLat}}";
-// var myMarkerPosition = new kakao.maps.LatLng(realLat, realLong);
-// var myMarker = new kakao.maps.Marker({
-//     position: myMarkerPosition
-// });
-// myMarker.setMap(map);
+    input1 = document.createElement('input');
+    input1.setAttribute('type', 'hidden');
+    input1.setAttribute('name', 'long');
+    input1.setAttribute('id', 'long');
+    input1.setAttribute('value', myLongLat["realLong"] );
 
-// // 선을 구성하는 좌표 배열
-// var linePath = [markerPosition,	myMarkerPosition];
-// console.log(linePath);
+    input2 = document.createElement('input');
+    input2.setAttribute('type', 'hidden');
+    input2.setAttribute('name', 'lat');
+    input2.setAttribute('id', 'lat');
+    input2.setAttribute('value', myLongLat["realLat"] );
 
-// // 지도에 표시할 선을 생성합니다
-// var polyline = new kakao.maps.Polyline({
-//     path: linePath,
-//     strokeWeight: 5,
-//     strokeColor: '#DB4040',
-//     strokeOpacity: 1,
-//     strokeStyle: 'solid'
-// });
+    btn1 = document.createElement('button');
+    btn1.innerText='뒤로 가기';
+    btn1.setAttribute('class','bt1');
 
-// polyline.setMap(map);
+    form1.appendChild(input1);
+    form1.appendChild(input2);
+    form1.appendChild(btn1);
+    backbutton.appendChild(form1);
 
-// var realDistance = Math.round(polyline.getLength());
-
-// ////////////////////////////////////////////////
-// // 커스텀 오버레이에 표시할 내용입니다     
-// // HTML 문자열 또는 Dom Element 입니다
-// var parkTitle = "{{p_park}}";
-// var con = "{{p_content}}";
-// var vr = "{{p_visit_road}}";
-// var content = 
-//             '<div class="overlaybox">' + 
-//             '	 <div class="title">' +
-//                     parkTitle + 
-//             '		<div class="close" onclick="closeOverlay()" title="닫기">X</div>' +
-//             '	 </div>' +	
-//             '    <div class="boxtitle">공원 설명</div>' +
-//             '    <div class="first">' +
-//                     con + '<br>' +
-//             '	 </div>' +
-//             '    <div class="boxtitle">찾아오는 길</div>' +
-//             '    <div class="first">' +
-//                     vr + '<br>' +
-//             '	 </div>' +
-//         '</div>';
-
-// // 커스텀 오버레이가 표시될 위치입니다 
-// var position = new kakao.maps.LatLng(lat, long);  
-
-// // 커스텀 오버레이를 생성합니다
-// var customOverlay = new kakao.maps.CustomOverlay({
-//     position: position,
-//     content: content,
-//     xAnchor: 0.3,
-//     yAnchor: 0.91
-// });
-
-// // 클릭하면 커스텀 오버레이가 표시됩니다
-// kakao.maps.event.addListener(marker, 'click', function(){
-//     customOverlay.setMap(map);
-// });
-
-// function closeOverlay() {
-//     customOverlay.setMap(null);     
-// }
+}

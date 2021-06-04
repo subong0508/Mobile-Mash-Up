@@ -12,6 +12,19 @@ body {
     margin-top: 40px;
     margin-bottom: 20px;
 }
+.bt1{
+    background-color: #0aa165;
+    color:white;
+    justify-content:center;
+    margin : 3px;
+    border: rgb(240, 228, 228);
+    border-radius:2px;
+    display: inline-block;
+    font-size: 20px;
+}
+.bt1:hover {
+    background-color: #06b46f;
+}
 #map {
     border-radius: 10px;
     object-fit: cover;

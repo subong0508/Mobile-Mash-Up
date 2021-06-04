@@ -4,5 +4,5 @@ from map import views as v2
 from . import views
 
 urlpatterns = [
-    
+    path('location_', v1.location)
 ]

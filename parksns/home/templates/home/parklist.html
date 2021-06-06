@@ -18,6 +18,8 @@
         let parktel=[];
         let parkurl=[];
         let parkadd=[];
+        // for chat
+        let parkIdx = [];
         function loadParks() {
             {% for park in parks %}
                 parkname.push("{{ park.p_park }}");
@@ -30,6 +32,7 @@
                 parktel.push("{{ park.p_admintel }}");
                 parkurl.push("{{ park.template_url }}");
                 parkadd.push("{{ park.p_addr }}");
+                parkIdx.push("{{ park.p_idx }}");
             {% endfor %}
             parkobject.parkname = parkname;
             parkobject.parkdistance = parkdistance;
@@ -41,8 +44,8 @@
             parkobject.parktel = parktel;
             parkobject.parkurl = parkurl;
             parkobject.parkadd = parkadd;
-            console.log(parkobject);
-            makelistchild(parkobject,0);
+            parkobject.parkIdx = parkIdx;
+            makelistchild(parkobject, 0);
         }
         document.addEventListener("DOMContentLoaded", loadParks);
     </script>

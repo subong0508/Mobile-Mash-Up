@@ -18,6 +18,8 @@ pip install -r requirements.txt
 ### 3. Run App
 
 ```
+# open your Redis server(use another command if your os doesn't belong to UNIX family)
+redis-server &
 conda activate parksns
 cd parksns
 python manage.py runserver

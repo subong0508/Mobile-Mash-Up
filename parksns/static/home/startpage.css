@@ -1,0 +1,146 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    /*background-color: #00C776;*/
+    background: linear-gradient(-35deg, #0BB5D4, #0BDEC5, #00C776, #00C776);
+    background-size: 800% 800%;
+    -webkit-animation: backGradient 8s ease infinite; 
+    -moz-animation: backGradient 8s ease infinite; 
+    -o-animation: backGradient 8s ease infinite;
+    animation: backGradient 8s ease infinite;
+}
+@-webkit-keyframes backGradient{ 
+    0% {background-position:0% 50%} 
+    50% {background-position:100% 50%} 
+    100% {background-position:0% 50%} 
+} 
+@-moz-keyframes backGradient{ 
+    0% {background-position:0% 50%} 
+    50% {background-position:100% 50%} 
+    100% {background-position:0% 50%} 
+} 
+@-o-keyframes backGradient{ 
+    0% {background-position:0% 50%} 
+    50% {background-position:100% 50%} 
+    100% {background-position:0% 50%} 
+}
+@keyframes backGradient{
+    0% {background-position:0% 50%} 
+    50%{background-position:100% 50%} 
+    100%{background-position:0% 50%} 
+}
+
+.set{
+    width: 1020px;
+    margin: auto;
+}
+
+.box {
+    display: block;
+    position: relative;
+    height: 100vh;
+}
+
+.box::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    display: block;
+    z-index: -1;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#in2h3{
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 720px;
+    position: relative;
+    margin: auto;
+    left: 25px;
+    color: black;
+}
+
+.box2 {
+    background:linear-gradient(to right,lightgreen,#43cd94);
+    border-radius:10px;
+    display: flex;
+    width: 1020px;
+    height: 100px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+#title {
+    font-size: 110px;
+    font-weight: bold;
+    font-family: 'Nanum Myeongjo', serif;
+    width: 1020px;
+    position: relative;
+    margin: auto;
+    padding-top: 150px;
+    color: white;
+}
+
+#title2 {
+    font-size: 110px;
+    font-weight: bold;
+    width: 1020px;
+    margin: auto;
+    padding-top: 4px;
+    padding-bottom: 50px;
+    color: white;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+.contents {
+    padding-top: 4px;
+    font-size: 40px;
+    color: white;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.btgroup{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 400px;
+    margin-left: 35%;
+}
+
+.bt{
+    background-color: white;
+    font-weight: bold;
+    display: block;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 30px;
+    color: #00C776;
+    width: 400px;
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#init{
+    box-shadow: 0px 0px 0px white;
+    transition: box-shadow 0.1s linear;
+}
+
+#init:hover{
+    box-shadow: 0px 0px 20px  white;
+}
+
+#end{
+    text-align: center;
+    font-family: 'Nanum Myeongjo', serif;
+}

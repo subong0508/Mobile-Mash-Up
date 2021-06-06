@@ -1,0 +1,144 @@
+body {
+    width : 1020px;
+    margin : 0 auto;
+    background-color: #00C776;
+    font-family: 'Nanum Myeongjo', serif;
+    color: white;
+    word-wrap: break-word;
+}
+#parkName {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.bt1{
+    background-color: #0aa165;
+    color:white;
+    justify-content:center;
+    margin : 3px;
+    border: rgb(240, 228, 228);
+    border-radius:2px;
+    display: inline-block;
+    font-size: 20px;
+}
+.bt1:hover {
+    background-color: #06b46f;
+}
+#map {
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.from {
+    font-size: 35px;
+    margin-bottom: 0px;
+}
+#distanceAll {
+    font-size: 100px;
+    margin-top: 0px;
+}
+#walkTime {
+    font-size: 70px;
+}
+#bicycleTime {
+    font-size: 70px;
+}
+
+.distanceTime {
+    width: 510px;
+    display: flex;
+    flex-direction: column;
+}
+.about {
+    display: flex;
+    width: 510px;
+    flex-direction: column;
+
+}
+#row {
+    display: flex;
+    flex-direction: row;
+}
+.content {
+    font-size: 40px;
+    margin-bottom: 35px;
+    background-color: white;
+    color: #00C776;
+}
+.aboutPark {
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    text-align: justify;
+    width: 480px;
+}
+.aboutParkUrl {
+    font-size: 20px;
+    text-align: justify;
+    width: 480px;
+    text-decoration: none;
+    color: #00C776;
+    margin-left: 0;
+}
+#warning {
+    font-size: 20px;
+    margin-top: 5px;
+}
+.aboutTitle {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+/* 추가 */
+.title{
+    font-size:18px;
+    padding : 2px;
+}
+.overlaybox {
+    white-space: normal; 
+    color:white;
+    position:absolute;
+    width:360px;
+    height:300px;
+    padding:15px 10px;
+    border-radius: 6px;
+    background-color: #00C776; 
+    word-break:break-all; 
+    word-wrap:break-word; 
+    border:2px solid white;
+    height:auto;}
+.overlaybox:hover{
+        box-shadow: 0px 0px 20px  white;
+    }
+.overlaybox .boxtitle {
+    color:#fff;
+    font-size:14px;
+    font-weight:bold;
+    /*margin-bottom:8px;*/
+    margin : 10px;
+    height:auto;}
+.overlaybox .first {
+    color:#fff;
+    margin : 10px;
+    word-wrap:break-word;
+    font-size:1px;
+    /*border:1.5px solid #06b46f;*/
+    /*border-radius: 2px;*/
+    height:auto;} 
+.close{
+    background-color: #0aa165;
+    color:white;
+    justify-content:center;
+    margin : 3px;
+    height : 18px;
+    border: rgb(240, 228, 228);
+    border-radius:2px;
+    display: inline-block;
+    font-size: 10px;
+}
+.close:hover {
+    background-color: #06b46f;
+}

@@ -1,4 +1,12 @@
+### Django ###
 *.log
 *.pot
 *.pyc
+parksns/home/migrations/__pycache__/
+parksns/chat/migrations/__pycache__/
+parksns/map/migrations/__pycache__/
 __pycache__/
+local_settings.py
+parksns/db.sqlite3
+media
+*.rdb

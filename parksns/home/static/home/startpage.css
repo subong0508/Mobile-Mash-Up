@@ -4,7 +4,33 @@ html{
 
 body{
     height: 100%;
-    background-color: #00C776;
+    /*background-color: #00C776;*/
+    background: linear-gradient(-35deg, #0BB5D4, #0BDEC5, #00C776, #00C776);
+    background-size: 800% 800%;
+    -webkit-animation: backGradient 8s ease infinite; 
+    -moz-animation: backGradient 8s ease infinite; 
+    -o-animation: backGradient 8s ease infinite;
+    animation: backGradient 8s ease infinite;
+}
+@-webkit-keyframes backGradient{ 
+    0% {background-position:0% 50%} 
+    50% {background-position:100% 50%} 
+    100% {background-position:0% 50%} 
+} 
+@-moz-keyframes backGradient{ 
+    0% {background-position:0% 50%} 
+    50% {background-position:100% 50%} 
+    100% {background-position:0% 50%} 
+} 
+@-o-keyframes backGradient{ 
+    0% {background-position:0% 50%} 
+    50% {background-position:100% 50%} 
+    100% {background-position:0% 50%} 
+}
+@keyframes backGradient{
+    0% {background-position:0% 50%} 
+    50%{background-position:100% 50%} 
+    100%{background-position:0% 50%} 
 }
 
 .set{
@@ -53,7 +79,7 @@ body{
 }
 
 #title {
-    font-size: 90px;
+    font-size: 110px;
     font-weight: bold;
     font-family: 'Nanum Myeongjo', serif;
     width: 1020px;
@@ -64,7 +90,7 @@ body{
 }
 
 #title2 {
-    font-size: 90px;
+    font-size: 110px;
     font-weight: bold;
     width: 1020px;
     margin: auto;
@@ -72,41 +98,45 @@ body{
     padding-bottom: 50px;
     color: white;
     font-family: 'Nanum Myeongjo', serif;
-    text-shadow: -0.5px 0 #557855, 0.5px 0 #557855, 0 0.5px #557855, 0 -0.5px #557855;
 }
 
 .contents {
-    font-weight: bold;
     padding-top: 4px;
-    font-size: 30px;
+    font-size: 40px;
     color: white;
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Noto Serif KR', serif;
 }
 
 .btgroup{
-    padding-top: 50px;
+    margin-top: 100px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
-    width: 300px;
+    width: 400px;
+    margin-left: 35%;
 }
 
 .bt{
     background-color: white;
     font-weight: bold;
     display: block;
-    font-family: 'Nanum Myeongjo', serif;
-    font-size: 25px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 30px;
     color: #00C776;
-    width: 300px;
-    height: 50px;
-    border-radius: 30px;
+    width: 400px;
+    height: 60px;
+    border-radius: 50px;
     border: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#init{
     box-shadow: 0px 0px 0px white;
     transition: box-shadow 0.1s linear;
 }
 
-.bt:hover{
+#init:hover{
     box-shadow: 0px 0px 20px  white;
 }
 

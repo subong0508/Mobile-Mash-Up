@@ -141,13 +141,11 @@ function makelistchild(parkobject,x){
     link.setAttribute('href', '/chat/' + parkobject.parkIdx[x] + '/');
 
     btn2 = document.createElement('button');
-    btn2.setAttribute('class', 'chatButton');
+    btn2.setAttribute('class', 'bt3');
     btn2.innerHTML= '채팅';
     btn2.parkIdx = parkobject.parkIdx[x];
 
     link.appendChild(btn2);
-
-    btnschild.appendChild(btn1);
     btnschild.appendChild(link);
 
     div.appendChild(btnschild);

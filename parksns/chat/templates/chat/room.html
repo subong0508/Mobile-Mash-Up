@@ -5,11 +5,25 @@
 <head>
     <meta charset="utf-8"/>
     <title>Chat Room</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'room.css' %}"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200;300&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="head">
+    <div id="roomname">{{ parkname }}</div>
+    <div class="btgroup">
+            <!--button 내용 변경시 index.js if문 내용 수정해야함-->
+        <button class="bt2">홈으로</button>
+        <button class="bt2">공원 둘러보기</button>
+    </div>
+    </div>
     <textarea id="chat-log" cols="100" rows="20" readonly>{{ message }}</textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+    <div id="chat-space" style="overflow-x: hidden"></div><br>
+    <div id="chat-send">
+    <input id="chat-message-input" type="text" size="40">
+    <input id="chat-message-submit" type="button" value="전송">
+    </div>
     {{ room_num|json_script:"room-num" }}
     <script>
         const arr = document.cookie.split('=');
@@ -19,9 +33,7 @@
                 idx = i+1;
             }
         }
-
         const userName = arr[idx];
-
         const roomName = JSON.parse(document.getElementById('room-num').textContent);
 
         const chatSocket = new WebSocket(
@@ -35,6 +47,28 @@
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             document.querySelector('#chat-log').value += (data.message + '\n');
+            console.log(data.message);
+            console.log(data.message.split(':'));
+            var chatbox = document.createElement('div');
+            var name = document.createElement('span');
+            var text = document.createElement('div');
+            name.setAttribute('class','namediv');
+            text.setAttribute('class','textdiv');
+            name.innerHTML = data.message.split(':')[0];
+            text.innerHTML = data.message.split(':')[1];
+            if (userName === data.message.split(':')[0]){
+                chatbox.setAttribute('class', 'mychat');
+                chatbox.appendChild(name);
+                chatbox.appendChild(text);
+            }
+            else {
+                chatbox.setAttribute('class', 'otherchat');
+                chatbox.appendChild(text);
+                chatbox.appendChild(name);
+            }
+            document.getElementById('chat-space').appendChild(chatbox);
+            let Div = document.getElementById('chat-space');
+            Div.scrollTop = Div.scrollHeight;
         };
 
         chatSocket.onclose = function(e) {
@@ -67,6 +101,67 @@
             let json = {message: message}
             httpRequest.send(JSON.stringify(json));
         }
+
+        document.addEventListener("DOMContentLoaded", loadMessages);
+        function loadMessages() {
+            let messages =[];
+            {% for message in messages %}
+                messages.push("{{ message }}")
+            {% endfor %}
+            messages.pop();
+            for (let i=0; i<messages.length;i++){
+                makemessage(i);
+            }
+            let Div = document.getElementById('chat-space');
+            Div.scrollTop = Div.scrollHeight;
+        }
+        function makemessage(i){
+            var chatbox = document.createElement('div');
+            var name = document.createElement('span');
+            var text = document.createElement('div')
+            name.setAttribute('class','namediv');
+            text.setAttribute('class', 'textdiv');
+            let messages =[];
+            let splitmessages=[];
+            {% for message in messages %}
+                messages.push("{{ message }}")
+            {% endfor %}
+            messages.pop();
+            splitmessages = messages[i].split(':')
+            name.innerHTML = splitmessages[0];
+            text.innerHTML = splitmessages[1];
+            console.log(typeof splitmessages[1]);
+            if (typeof splitmessages[1]==="undefined"){
+                return
+            }
+            if (userName === splitmessages[0]){
+                chatbox.setAttribute('class', 'mychat');
+                chatbox.appendChild(name);
+                chatbox.appendChild(text);
+            }
+            else {
+                chatbox.setAttribute('class', 'otherchat');
+                chatbox.appendChild(text);
+                chatbox.appendChild(name);
+            }
+
+            document.getElementById('chat-space').appendChild(chatbox);
+
+        }
+        document.addEventListener('DOMContentLoaded',function() {
+            const btselect = document.querySelectorAll("button")
+            for (let a = 0; a < btselect.length; a++) {
+                document.querySelectorAll("button")[a].onclick = function (e) {
+                    if (e.target.innerText === '홈으로') {
+                        console.log(1);
+                        location.href = "/";
+                    }
+                    if (e.target.innerText === '공원 둘러보기'){
+                        window.history.back();
+                    }
+                }
+            }
+        });
     </script>
 </body>
-</html>
+</html></html>

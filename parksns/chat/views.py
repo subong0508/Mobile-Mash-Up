@@ -13,7 +13,15 @@ def room(request, room_num):
     except Exception:
         message = ''
     message += '\n'
-    return render(request, 'chat/room.html', {'room_num': room_num, 'message': message })
+    messages = message
+    messages = messages.split('\n')
+    with open('seoul_parks.json', encoding='utf-8') as f:
+        info = json.load(f)
+        for park in info['DATA']:
+            if room_num==park['p_idx']:
+                parkname = park['p_park']
+
+    return render(request, 'chat/room.html', {'room_num': room_num, 'message': message, 'messages': messages, 'parkname': parkname })
 
 def save_room(request, room_num):
     data = json.loads(request.body)

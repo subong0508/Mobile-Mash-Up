@@ -8,6 +8,7 @@
     <script>
         var userName; 
         document.addEventListener("DOMContentLoaded", getLocation);
+        document.addEventListener("DOMContentLoaded", fillUserName);
 
         function getLocation() {
             if (navigator.geolocation) {
@@ -20,6 +21,20 @@
             document.getElementById("lat").value = position.coords.latitude;
             document.getElementById("init").innerHTML = "공원 둘러보기";
             document.getElementById("init").disabled = false;
+        }
+
+        function fillUserName() {
+            if(document.cookie.indexOf("user") != -1) {
+                const arr = document.cookie.split('=');
+                let idx = -1;
+                for(let i=0;i<arr.length;i++) {
+                    if(arr[i].indexOf("user") != -1) {
+                        idx = i+1;
+                    }
+                }
+                let userName = arr[idx];
+                document.getElementById("userName").value = userName;
+            }
         }
 
         function setUserName() {

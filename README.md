@@ -26,12 +26,15 @@ python manage.py runserver
 ```
 
 ## 우리 동네 공원봇
-### 실행 화면
 
+### 시작 화면
 ![시작 화면](./imgs/home.png)
 
+### 공원 목록
 ![공원 목록](./imgs/parklist.png)
 
+### 지도 화면
 ![지도 화면](./imgs/kakaomap.png)
 
+### 채팅방
 ![채팅방](./imgs/chat.png)

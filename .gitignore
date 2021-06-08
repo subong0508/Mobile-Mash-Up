@@ -8,4 +8,5 @@ parksns/map/migrations/__pycache__/
 __pycache__/
 local_settings.py
 media
+*/db.sqlite3
 *.rdb

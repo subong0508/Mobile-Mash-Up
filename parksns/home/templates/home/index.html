@@ -24,6 +24,7 @@
         }
 
         function fillUserName() {
+            // console.log(document.cookie);
             if(document.cookie.indexOf("user") != -1) {
                 const arr = document.cookie.split('=');
                 let idx = -1;
@@ -44,7 +45,7 @@
                 let date = new Date(Date.now() + 86400e3);
                 date = date.toUTCString();
                 document.cookie = "user=" + userName + "; SameSite=Lax; expires="; + date;
-                console.log(document.cookie);
+                // console.log(document.cookie);
             }
         }
     </script>
